@@ -6,4 +6,4 @@ print(type(y))
 
 #The float approximation for 0.1 is a little more that 0.1
 
-print(.1 + .1 == .2)
+print(.1 + .1 == .3)

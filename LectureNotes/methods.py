@@ -8,3 +8,5 @@ myName = 'color puce'
 
 print(myName.capitalize())
 print(myName.casefold())
+
+#There are many methods 
