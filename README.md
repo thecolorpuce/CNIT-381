@@ -7,4 +7,4 @@ This repo is used to contain, and keep notes between my school laptop, and home 
 
 --------------------------------------------------------------------------
 
-<h4>Working on the "Python Functions and Files" portion of notes.</h4>
+<h4>Working on the "Lab-01".</h4>
