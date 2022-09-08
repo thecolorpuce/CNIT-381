@@ -1,5 +1,5 @@
-# Name: ...
-# CNIT-381 - section ...
+# Name: Riley Asp
+# CNIT-381 - section 002
 # Lab 01
 
 # You may do your work by editing this file, or by typing code at
