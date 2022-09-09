@@ -1,9 +1,3 @@
-"""
-This is version 1 of Lab-01
-
-Will be working on this after my useless elective required for graduation
-"""
-
 # Name: Riley Asp
 # CNIT-381 - section 002
 # Lab 01
@@ -31,8 +25,6 @@ from math import pi				# makes the pi available
 ### Input radians: 10                                                                                             
 ### 572.7272727272727
 
-print ("Problem 1 solution follows:")
-radian = float(input("Input radians: "))# Takes a float as an input of radius
 print ("Problem 1 solution follows:")
 radian = float(input("Input radians: "))# Takes a float as an input of radius
 
