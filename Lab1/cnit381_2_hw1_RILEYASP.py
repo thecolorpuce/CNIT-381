@@ -60,7 +60,20 @@ print(f"The degrees are {radian_to_degree(radian)}.")
 
 print ("Problem 2 solution follows:")
 r = float(input ("Input the radius of the circle : ")) # Takes a float as an input of radius
-# ... write your code and comments here (and remove this line)
+
+#Let's create a function to do this.
+
+def circle_area(radius):
+    """Calculate the area of the circle
+        
+        INPUT:
+        Radius
+        
+        OUTPUT:
+        Area = PI * r**"""
+    return 3.14 * radius**2
+
+print(f"\tArea: {circle_area(r)}")
 
 
 ###
@@ -70,7 +83,11 @@ r = float(input ("Input the radius of the circle : ")) # Takes a float as an inp
 color_list = ["Red","Green","White" ,"Black","Blue","Yellow"]
 
 print ("Problem 3 solution follows:")
-# ... write your code and comments here (and remove this line)
+
+#I don't think this needs to be elegant...
+
+print(f"First on the list: {color_list[0]}")    #Index 0 is the first item
+print(f"Last on the list {color_list[-1]}")     #Index -1 is always the last item (Unless it isn't because I'm stupid)
 
 ###
 ### Problem 4
@@ -82,7 +99,11 @@ days_in_month = [31,28,31,30,31,30,31,31,30,31,30,31]
 month = 5
 
 print ("Problem 4 solution follows:")
-# ... write your code and comments here (and remove this line)
+
+#I am interpreting this as making use of the integer provided in month (5) to be used for the index in 'days_in_month'
+
+num_days = days_in_month[month]
+
 print(num_days)
 
 ###
@@ -95,8 +116,15 @@ eclipse_dates = ['June 21, 2001', 'December 4, 2002', 'November 23, 2003',
 
 print ("Problem 5 solution follows:")
 
-# ... write your code and comments here (and remove this line)
+#The three most recent dates
+#Nice that they're in order
+
+recent_dates = eclipse_dates[-3 : None] #starting at index -3 (3rd from last) and ending with 'None' as index -1 will ber Mar 20, 2015
+
 print(eclipse_dates)
+print("The 3 most recent days are as follows:")
+for e in recent_dates:
+    print(f"\t{e}")
 
 ###
 ### Problem 6
@@ -106,7 +134,13 @@ b = [2, 6, 9, 10]
 c = [100, 200]
 print ("Problem 6 solution follows:")
 
-# ... write your code and comments here (and remove this line)
+print("List a:")
+print(f"\tMax = {max(a)}, Min = {min(a)}, Len = {len(a)}")
+print("\nList b:")
+print(f"\tMax = {max(b)}, Min = {min(b)}, Len = {len(b)}")
+print("\nList c:")
+print(f"\tMax = {max(c)}, Min = {min(c)}, Len = {len(c)}")
+
 # sample output: Max = 4, Min = 2
 
 ###
@@ -118,7 +152,16 @@ names = ["Carol", "Albert", "Ben", "Donna"]
 
 print ("Problem 7 solution follows:")
 
-# ... write your code and comments here (and remove this line)
+#The objective is to join this list with '&' and have it in alphabetical order
+
+#Sort alphabetically 
+sortedNames = sorted(names)
+
+#Join with '&'
+joinedNames = " & ".join(sortedNames)
+
+#Print the names
+print(joinedNames)
 
 ###
 ### Problem 8
@@ -128,7 +171,11 @@ print ("Problem 7 solution follows:")
 names = ["Carol", "Albert", "Ben", "Donna"]
 print ("Problem 8 solution follows:")
 
-# ... write your code and comments here (and remove this line)
+#Just appending the name 'Eugenia'
+
+names.append('Eugenia')
+
+print(names)
 
 ###
 ### Problem 9
@@ -144,7 +191,18 @@ print ("Problem 8 solution follows:")
 
 print ("Problem 9 solution follows:")
 
-# ... write your code and comments here (and remove this line)
+#Create the dictionary. Using provided examples...
+
+cities = {'Shanghai': 17.8,
+        'Istanbul': 13.3,
+        'Kerachi': 13.0,
+        'Mumbai': 12.5,
+        }
+
+#Use a for loop to itterate through the dictionary, and print the key & value.
+
+for k, v in cities.items(): #Using the items method for keys and values
+    print(f"City: {k.title()} || Population: {v} million.")
 
 ###
 ### Problem 10
@@ -157,4 +215,18 @@ print(a is b)
 print(a == c)
 print(a is c)
 
-# ... write your answer in here
+"""
+print(a == b): True..
+It is established that b is == a. They are the same list, so the output is 'True
+
+print(a is b): True..
+'is' is used to determine if variables are the same. In this case they are, so it returns true
+
+print(a == c): True..
+a && c have the same values, so they are equal..
+
+print(a is c): False..
+
+This is different because b was explicitly defined to be equal to a. c on the other hand just happens to have the same value.
+In essence, they are not the same object.
+"""
