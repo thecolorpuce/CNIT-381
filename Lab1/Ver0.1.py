@@ -33,7 +33,22 @@ from math import pi				# makes the pi available
 
 print ("Problem 1 solution follows:")
 radian = float(input("Input radians: "))# Takes a float as an input of radius
-# ... write your code and comments here (and remove this line)
+print ("Problem 1 solution follows:")
+radian = float(input("Input radians: "))# Takes a float as an input of radius
+
+
+
+def radian_to_degree(radian):
+    """Convert Radians to degrees:
+    
+        INPUT:
+        radian
+        
+        Output:
+        degrees."""
+    return radian * 180 / 3.14
+
+print(f"The degrees are {radian_to_degree(radian)}.")
 
 ###
 ### Problem 2
