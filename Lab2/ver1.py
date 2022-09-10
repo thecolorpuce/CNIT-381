@@ -198,3 +198,4 @@ def sortedMerge(a, b):
 A = sortedMerge(A, B)       #Call the function, and print
 
 print(A)
+#This feels too simple, but to my understanding, it works. So here we are
