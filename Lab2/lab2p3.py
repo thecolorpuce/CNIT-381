@@ -48,13 +48,15 @@ def lucky_int(list):
     for i, v in lucky.items():
         if(i == v):
             return i
+        elif(i != v):
+            continue
         else:
             return -1
     return lucky
 
 
 
-
+#This is close. I'll come back to it in a bit
 
 
 print(f"\n{lucky_int(nums1)}")
