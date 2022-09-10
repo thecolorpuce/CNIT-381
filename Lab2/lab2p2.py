@@ -18,7 +18,14 @@ nums = int(input ("Input: ")) # Takes a list of int || Modified this to require 
 
 def unique_nums(nums):
 
-    for i in nums:
-        print(i)
+    """Find the unique number
+    
+    INPUT:
+    [2,2,1]
+    
+    OUTPUT:
+    1"""
+
+    
 
 print(unique_nums(nums))

@@ -20,8 +20,8 @@ def unique(st):
     for v in range(0, len(st)):
         for j in range(v + 1, len(st)):
             if(st[v] == st[j]):
-                return False
-    return True
+                return False            #Return Flase if v&j match
+    return True                         #Retrun True if loop completes
 
 
 print(unique(input))    #Call the function, and go forth.
