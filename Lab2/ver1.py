@@ -19,25 +19,26 @@
 ### "abcdebg" is not
 
 print ("Problem 1 solution follows:")
-input = input("Input a string: ")# Takes a string as an input
+p1in = input("Input a string: ")# Takes a string as an input
 
 #I think I could itterate through the string, and make a counter for each character in the string
 
-def unique(st):
+def unique(string):
     #I'm stupid. The best method I can figure is to make use of two for loops
     #loop 'v' steps into a second for loop 'j'
     #Essentially we start at the first position with the first for loop.
     #Then we loop through the string
     #If the same value is found, we return false
     #If no values are foun, we return True
-    for v in range(0, len(st)):
-        for j in range(v + 1, len(st)): #+1 to avoid counting the current value
-            if(st[v] == st[j]):
-                return False
-    return True                         #We return true after the whole loop has itterated
+    for i in range(0, len(string)):
+        for j in range(i + 1, len(string)):
+            if(string[i] == string[j]):
+                return "This string is not Unique"            #Return Flase if v&j match
+    return "This string is unique"                        #Retrun True if loop completes
 
 
-print(unique(input))    #Call the function, and go forth.
+print(unique(p1in))    #Call the function, and go forth.
+
 
 ###
 ### Problem 2 (20 points)
@@ -52,8 +53,40 @@ print(unique(input))    #Call the function, and go forth.
 ### Output: 4
 
 print ("Problem 2 solution follows:")
-nums = input ("Input: ") # Takes a list of int
-# ... write your code and comments here (and remove this line)
+nums = input("Input: ") 
+
+#I am unsure of how to find it without extra memory.
+#Perhaps that is something we've yet to go over. I'll just try this in my own way for now.
+
+def unique_nums(nums):
+    """Find the unique number
+    
+    INPUT:
+    [2,2,1]
+    
+    OUTPUT:
+    1"""
+
+    out = ""
+    list = {}                   #A dictionary to store information in. k = the integers provided, v = number of times integer appears
+    uniq = []                   #A list to hold the unique values from the 'list' dictionary
+
+    #This for loop is used to populate the list dictionary with the keys and values to help find unique vlaues
+    for i in nums:              
+        if i not in list:       
+            list[i] = 1
+        else:
+            list[i] += 1
+    #for loop that goes through the k,v in the 'list dictionary
+    for k, v in list.items():
+        if v == 1:
+            uniq.append(k)      #If v == 1, then it is a unique value. We append it to the 'uniq' list
+        else: 
+            continue            #Continue looping if above if statement is not met
+
+    return uniq
+
+print(', '.join(unique_nums(nums))) #This way we can display multiple unique numbers.
 
 
 ###
@@ -76,11 +109,56 @@ nums = input ("Input: ") # Takes a list of int
 ### Input: [2,2,2,3,3]
 ### Output: -1
 ### Explanation: There are no lucky numbers in the list.
-nums1 = [2,2,3,4]
+
+
+nums1 = [2,2,3,4,4]
 nums2 = [1,2,2,3,3,3]
 nums3 = [2,2,2,3,3]
+nums4 = [1,3,3,2,6,2]
 print ("Problem 3 solution follows:")
-# ... write your code and comments here (and remove this line)
+
+def lucky_int(list):
+    """Lucky int... Number appears the same number of times as its value. 2 would be lucky if it showed up twice.
+        INPUT:
+        A list of integers
+        
+        OUTPUT:
+        Lucky Integers"""
+
+#I guess I could do something weird
+
+    c1 = 0
+    lucky = {}                   #A dictionary that I use to store the key(value from list) and value(number of times the value appears in the list)
+    list.sort()                  #Not relevant in this example, but this will ensure unsorted lists will bring back the largest value
+
+    #I should make a dictionary that holds the key(list) and value (number of times integer appears in the list)
+    for i in list:              #A for loop that itterates through the provided list
+        if i not in lucky:      #if the integer is not in the 'lucky' dictionary, we add it, and assign it a value of 1
+            lucky[i] = 1
+        else:
+            lucky[i] += 1       #If the value already exists, we increment the value of the integer by 1. If we have two 2's, the key value pair would be {2: 2}
+
+    #The dictionary 'lucky' now has associated values. 
+    #Ittereate through the dictionary, and find the largest value that is lucky
+    for k, v in lucky.items():  #for loop itterating through the dictionary. k(key), v(value)
+        if k == v:              #If the key == the value, we assign the variable c1 to = k
+            c1 = k              #this is overwritten when a new value enters the scope. Since this is sorted, that value will be larger
+        else:
+            continue            #If k != v, we continue looping
+    
+    if c1 == 0:                 #Requirements wanted to return a -1 instead of a 0
+        return -1
+    return c1
+
+
+
+#This is close. I'll come back to it in a bit
+
+
+print(f"\n{lucky_int(nums1)}")
+print(f"\n{lucky_int(nums2)}")
+print(f"\n{lucky_int(nums3)}")
+print(f"\n{lucky_int(nums4)}")  #My extra example list nums4 working as intended
 
 ###
 ### Problem 4 (20 points)
@@ -104,11 +182,6 @@ print ("Problem 3 solution follows:")
 ### Input: 4
 ### Output: 3
 ### Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
-
-
-
-
-
 
 n = int(input ("Input: ")) # Takes a an int
 print ("Problem 4 solution follows:")
