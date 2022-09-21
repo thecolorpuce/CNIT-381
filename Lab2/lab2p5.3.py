@@ -10,6 +10,7 @@
 
 print ("Problem 5 solution follows:")
 
+#A sorted buffer. I think we could make use of the zip function for this
 #I'll make use of the two provided lists above
 
 A = [1,3,4,8,9]
@@ -24,13 +25,28 @@ def sortedMerge(a, b):
     
     OUTPUT:
     The contents of the two lists merged into one list, and sorted numerically"""
+    index = -1
     
-    for i in b:
-        output = i
-        a.append(output)
+    #Insert the contents of b into a
+    for i in range(5):
+        if a[index] > b[index]:
+            for j in a:
+                if b[index] > j:
+                    a.insert(index, b[index])
+            #a.insert(index, b[index])
+            #index -= 1
+        elif a[index] < b[index]:
+            a.insert(index, a[index])
+            index -= 1
+        else:
+            break
+
+
+
+
     
-    a.sort()
-    return a
+    #Find a method to sort the contents withoug sort()
+
 
 sortedMerge(A, B)       #Call the function, and print
 print(A)

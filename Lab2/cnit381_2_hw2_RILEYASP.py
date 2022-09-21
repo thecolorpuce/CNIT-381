@@ -245,7 +245,6 @@ print(f"\nF({n}) = {fibonacci(n)}")
 
 print ("Problem 5 solution follows:")
 
-#A sorted buffer. I think we could make use of the zip function for this
 #I'll make use of the two provided lists above
 
 A = [1,3,4,8,9]
@@ -268,7 +267,5 @@ def sortedMerge(a, b):
     a.sort()
     return a
 
-A = sortedMerge(A, B)       #Call the function, and print
-
+sortedMerge(A, B)       #Call the function, and print
 print(A)
-#This feels too simple, but to my understanding, it works. So here we are
