@@ -1,0 +1,55 @@
+import paramiko
+import time
+import getpass
+
+ssh_client = paramiko.SSHClient() #Creating client object
+ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+
+
+devices = {
+    'r1': {
+        'hostname': '192.168.122.10',
+        'username': 'admin',
+        'password': 'class',
+        'port':'22',
+    },
+    'r2': {
+        'hostname': '192.168.122.20',
+        'username': 'admin',
+        'password': 'class',
+        'port':'22',
+    },
+    'r3': {
+        'hostname': '192.168.122.30',
+        'username': 'admin',
+        'password': 'class',
+        'port':'22',
+    },
+}
+
+#shell = ssh_client.invoke_shell()
+
+
+commands = ['show version\n', 'show run\n']
+
+for device in devices.keys():
+    print(f"Please enter the password for {device}:\n")
+    password = getpass.getpass("Password: ")
+    
+    ssh_client.connect(hostname=devices[device]['hostname'], username=devices[device]['username'], 
+        password=password, port=devices[device]['port'], look_for_keys=False, allow_agent=False)
+    shell = ssh_client.invoke_shell()
+    print(f"Connecting to {devices[device]['hostname']}")
+    for command in commands:
+        shell.send(command)
+        time.sleep(1)
+        shell.send(' terminal length 0\n')
+        time.sleep(1)
+        output = shell.recv(10000)
+        output = output.decode('utf-8') 
+        print(output)
+
+if ssh_client.get_transport().is_active() == True:
+    print("Closing Connection....")
+    ssh_client.close()
