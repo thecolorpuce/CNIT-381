@@ -1,0 +1,35 @@
+import paramiko
+import time
+
+ssh_client = paramiko.SSHClient() #Creating client object
+ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+#router = {'hostname':'192.168.122.10', 'port':'22', 'username':'admin', 'password':'class'}
+
+devices = {
+    'r1': {
+        'hostname': '192.168.122.10',
+        'username': 'admin',
+        'password': 'class',
+        'port':'22',
+    }
+}
+
+#shell = ssh_client.invoke_shell()
+
+
+commands = ['show version\n', ' show run\n']
+
+for device in devices.keys():
+    ssh_client.connect(hostname=devices[device]['hostname'], username=devices[device]['username'], password=devices[device]['password'], port=devices[device]['port'], look_for_keys=False, allow_agent=False)
+    shell = ssh_client.invoke_shell()
+    print(f"Connecting to {devices[device]['hostname']}")
+    for command in commands:
+        
+        shell.send(command)
+        shell.send(' terminal length 0\n')
+        time.sleep(1)
+        output = shell.recv(10000)
+        output = output.decode('utf-8') 
+        print(output)
+ssh_client.close()
